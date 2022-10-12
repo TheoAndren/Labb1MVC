@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Customer>
+
+<div class="container">
+    <div>
+        <h1>Kunder</h1>
+        <a class="btn btn-primary" asp-controller="Customer" asp-action="Create">Lägg till Kund</a>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomerId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+
+
+            </tr>
+
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.CustomerId
+                        </td>
+                        <td>
+                            @item.FirstName
+                        </td>
+                        <td>
+                            @item.LastName
+                        </td>
+
+                        <td>
+                            <a class="btn btn-primary" asp-controller="Customer" asp-action="Customer" asp-route-id="@item.CustomerId">Kunddetaljer</a>
+                            <a class="btn btn-info" asp-controller="Customer" asp-action="Edit" asp-route-id="@item.CustomerId">Editera Kund</a>
+                            <a class="btn btn-danger" asp-controller="Customer" asp-action="Delete" asp-route-id="@item.CustomerId">Radera Kund</a>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+</div>

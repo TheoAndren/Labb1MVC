@@ -1,0 +1,65 @@
+﻿@using Labb1.ViewModels
+
+@model CustomerBooksViewModel
+
+<table class="table">
+    <tr>
+        <th>
+            Titel
+        </th>
+        <th>
+            Författare
+        </th>
+        <th>
+            Återlämnad
+        </th>
+        <th>
+            Bilder
+        </th>
+        <th>
+            Senast Återlämnad
+        </th>
+    </tr>
+
+
+    @foreach (var item in Model.CustomerBook)
+    {
+        var test = Model.Books.Where(i => i.BookId == item.BookId);
+        @foreach (var items in test)
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        @items.Title
+                    </td>
+
+                    <td>
+                        @items.Author
+                    </td>
+                    <td>
+                        @if (items.Avalible)
+                        {
+                            <p>Boken Är Återlämnad</p>
+                        }
+                        @if (!items.Avalible)
+                        {
+                            <p>Boken Är Inte Återlämnad</p>
+                        }
+                    </td>
+                    <td>
+                        <img src="@items.ImageUrl" class="img-fluid">
+                    </td>
+
+                    <td>
+                        <p>@item.ReturnDate </p>
+                    </td>
+
+
+                </tr>
+            </tbody>
+
+
+
+        }
+    }
+</table>
