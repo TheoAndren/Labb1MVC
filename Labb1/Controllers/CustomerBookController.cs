@@ -62,7 +62,7 @@ namespace Labb1.Controllers
             _appDbContext.Add(CustomerViewModel.CustomerBook);
             _appDbContext.SaveChanges();
 
-            return View("Checkout Complete");
+            return View("Checkout");
         }
     }
 }
